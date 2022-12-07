@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from './components/header/header';
+import { useState } from "react";
+import { CreateClientModal } from './components/clientModal/createClientModal';
+import { GlobalStyle } from './styleGlobal';
+import { ClientContextProvider } from './components/context/clientContext';
+import { Main } from './components/main';
 
-function App() {
+export function App() {
+  
+  const [newCreateClientModal, setNewCreateClienteModal] = useState(false);
+
+    function handleOpenNewClientModal(){
+        setNewCreateClienteModal(true)
+    }
+
+    function handleCloseNewClientModal(){
+        setNewCreateClienteModal(false)
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ClientContextProvider>
+      <Header openModal={handleOpenNewClientModal}></Header>
+      <Main></Main>
+      <GlobalStyle/>
+      <CreateClientModal
+        isOpen={newCreateClientModal}
+        onRequestClose={handleCloseNewClientModal}
+      />
+  </ClientContextProvider>
   );
 }
 
-export default App;
+
