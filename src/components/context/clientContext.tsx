@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
+import { isConstructorDeclaration } from "typescript";
 import { api } from "../services/api";
 
 interface Client {
@@ -21,6 +22,7 @@ interface ClientContext {
     clients: Client[];
     users: Users[];
     createClient: (client: ClientInput) => Promise<void>
+    createUser: (user: userInput) => Promise<void>
     showClient: () => void;
     getAllClient:() => void;
     getAllUsers:() => void
@@ -31,6 +33,12 @@ interface ClientContext {
 interface ClientInput {
     name:string;
     document:string;
+}
+
+interface userInput {
+    name:string;
+    document:string;
+    password:string;
 }
 
 interface clientContext{
@@ -56,6 +64,13 @@ export function ClientContextProvider({children}:clientContext){
    
     async function createClient(clientRequest: ClientInput){
         const response = await api.post('/client', clientRequest)
+        if (response.status == 200) setShowClient(true)
+        setResponseClient(response.data)
+    }
+
+    async function createUser(userRequest: userInput){
+        const response = await api.post('/user', userRequest)
+        if (response.status == 200) setShowClient(false)
         setResponseClient(response.data)
     }
 
@@ -80,7 +95,7 @@ export function ClientContextProvider({children}:clientContext){
     }
 
     return (
-        <ClientContext.Provider value={{clients, users, showClient, showclient, createClient, getAllClient, getAllUsers, replaceCreatedAt}}>
+        <ClientContext.Provider value={{clients, users, showClient, showclient, createClient, getAllClient, getAllUsers, replaceCreatedAt, createUser}}>
             {children}
         </ClientContext.Provider>
     );

@@ -1,13 +1,10 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-    font-size:10px;
     cursor:pointer;
     border:0px;
-    color:red;
-    border-radius:10px;
-
-    transition:0.2s ;
+    transition:0.2s;
+    border-radius:5px;
     &:hover{
         filter:brightness(0.8)
     }

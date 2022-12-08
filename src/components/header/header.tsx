@@ -1,10 +1,12 @@
-
+import { useState } from "react";
 import { Button, Buttons, Container, Title } from "./style";
 
 interface headerProp {
-    openModal: () => void
+    openModal: () => void;
+    openModalUser: ()=> void;
 }
-export function Header({openModal}: headerProp) {
+export function Header({openModal, openModalUser}: headerProp) {
+
     return (
         <Container>
             <Title>Programa Pontos</Title>
@@ -14,7 +16,7 @@ export function Header({openModal}: headerProp) {
                     Cadastrar Cliente
                 </Button>
 
-                <Button type="button">
+                <Button type="button"  onClick={openModalUser}>
                     Cadastrar Usuário
                 </Button>
             </Buttons>

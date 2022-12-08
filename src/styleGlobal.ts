@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     .react-modal-overlay{
         position:fixed;
-        top:-400px;
+        top:-100px;
         bottom:0;
         left:0;
         right: 0;
@@ -13,9 +13,10 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .react-modal-content{
-        width:15%;
-        border-radius:10px;
-        background: lightgray;
+        width:40%
+        border-radius:5px;
+        background: gray;
+        height:300px;
     }
 
 `

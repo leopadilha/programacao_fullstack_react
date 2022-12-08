@@ -1,34 +1,38 @@
 import styled from "styled-components";
 
 export const Content = styled.form`
-   input{
-    width:98%;
-    background-color:lightblue;
-    height: 50px;
-    border-radius:12px;
+    input{
+        width:96%;
+        margin-left:3px;
+        border-radius:12px;
+        height:50px;
+        border:1px solid white;
+        padding-top:10px;
+    
+        &::placeholder{
+            color:black;
+        }
+    
+        & + input {
+            margin-top:5px
+        }
+       }
 
-    border:1px solid white;
-
-    &::placeholder{
-        color:black;
+       h1{
+        margin-left:3px;
     }
-
-    & + input {
-        margin-top:5px
-    }
-   }
-
-   button{
-    margin-top:5px;
-    width: 98%;
-    background-color: gray;
-    border-radius:10px;
-    border:0;
-    cursor:pointer;
-
-    &:hover{
-        color:blue;
-    }
-   }
+    
+       button{
+        margin: 15px 0 0 3px;
+        width: 98%;
+        height:30px;
+        border-radius:10px;
+        border:0;
+        cursor:pointer;
+    
+        &:hover{
+            color:blue;
+        }
+       }
 `
 

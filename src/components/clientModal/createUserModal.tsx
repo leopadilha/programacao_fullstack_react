@@ -1,31 +1,33 @@
 import { FormEvent, useState, useContext } from 'react';
 import Modal from 'react-modal';
 import { ClientContext } from '../context/clientContext';
-import { Content } from './style';
+import { Content } from '../clientModal/style';
 
 
-interface NewCreateClientModal{
+interface NewCreateUserModal{
     isOpen: boolean;
     onRequestClose: () => void;
 }
-export function CreateClientModal({isOpen, onRequestClose}: NewCreateClientModal){
+export function CreateUserModal({isOpen, onRequestClose}: NewCreateUserModal){
 
 
-    const [name, setName] = useState('')
+    const [ name, setName ] = useState('')
     const [ document, setDocument] = useState('')
+    const [ password, setPassword] = useState('')
 
-    const data = { name, document }
+    const data = { name, document, password }
 
-    const { createClient } = useContext(ClientContext)
+    const { createClient, createUser } = useContext(ClientContext)
     
     const [client, setClient] = useState('')
 
     
-   async  function handleCreateNewClient(e: FormEvent){ 
+   async  function handleCreateNewUser(e: FormEvent){ 
         e.preventDefault();
-        await createClient(data)
+        await createUser(data)
         setDocument('')
         setName('')
+        setPassword('')
         onRequestClose()
     }
 
@@ -36,8 +38,8 @@ export function CreateClientModal({isOpen, onRequestClose}: NewCreateClientModal
             overlayClassName="react-modal-overlay"
             className="react-modal-content"
             >
-                <Content onSubmit={handleCreateNewClient}> 
-                    <h1>Cadastrar Cliente</h1>
+                <Content onSubmit={handleCreateNewUser}> 
+                    <h1>Cadastrar Usuário</h1>
 
                     <input type="text" placeholder='Nome do cliente'
                     value={name}
@@ -46,6 +48,11 @@ export function CreateClientModal({isOpen, onRequestClose}: NewCreateClientModal
                     <input type="text" placeholder='Documento do cliente'
                     value={document}
                     onChange={e=> setDocument(e.target.value)}
+                    />
+
+                    <input type="password" placeholder='Senha do cliente'
+                    value={password}
+                    onChange={e=> setPassword(e.target.value)}
                     />
 
                     <button type="submit">Cadastrar</button>
