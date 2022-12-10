@@ -5,6 +5,9 @@ export const Button = styled.button`
     border:0px;
     transition:0.2s;
     border-radius:5px;
+    color: #256D85;
+    height: 30px;
+
     &:hover{
         filter:brightness(0.8)
     }
@@ -18,7 +21,7 @@ export const Container = styled.header`
 `
 export const Title = styled.h1`
     font-size:20px;
-    color: black;
+    ccolor: #002B5B;
 `
 
 export const Buttons = styled.div`
@@ -26,4 +29,5 @@ export const Buttons = styled.div`
     width: 300px;
     display:flex;
     justify-content:space-between;
+    
 `

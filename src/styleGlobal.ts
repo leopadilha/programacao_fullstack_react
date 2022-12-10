@@ -17,6 +17,11 @@ export const GlobalStyle = createGlobalStyle`
         border-radius:5px;
         background: gray;
         height:300px;
-    }
+    } 
+    
+    p, h1, td, th, button {
+        font-family: 'Roboto';
+        font-weight: 400;
+    }   
 
 `

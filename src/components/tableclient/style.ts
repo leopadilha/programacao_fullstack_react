@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
+
 export const Container = styled.div`
+
     
-    margin-top:20px;
+    margin-top:50px;
     display:flex;
     justify-content: center;
     width:100%;
@@ -12,7 +14,7 @@ export const Container = styled.div`
     }
 
     td,th {
-        color: white;
+        color: #256D85;
        
     }
 
@@ -29,6 +31,12 @@ export const Container = styled.div`
         border-spacing: 2px;
         background-color: lightgray;
         
+    }
+
+    p{
+        color: #2B4865;
+
+
     }
 
    

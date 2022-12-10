@@ -41,16 +41,16 @@ export function CreateUserModal({isOpen, onRequestClose}: NewCreateUserModal){
                 <Content onSubmit={handleCreateNewUser}> 
                     <h1>Cadastrar Usuário</h1>
 
-                    <input type="text" placeholder='Nome do cliente'
+                    <input type="text" placeholder='Nome do usuário'
                     value={name}
                     onChange={e=> setName(e.target.value)}
                     />
-                    <input type="text" placeholder='Documento do cliente'
+                    <input type="text" placeholder='Documento do usuário'
                     value={document}
                     onChange={e=> setDocument(e.target.value)}
                     />
 
-                    <input type="password" placeholder='Senha do cliente'
+                    <input type="password" placeholder='Senha do usuário'
                     value={password}
                     onChange={e=> setPassword(e.target.value)}
                     />

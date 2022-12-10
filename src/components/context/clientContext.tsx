@@ -1,17 +1,16 @@
 import { createContext, useState, ReactNode, useEffect } from "react";
-import { isConstructorDeclaration } from "typescript";
 import { api } from "../services/api";
 
 interface Client {
-    id:number;
+    _id:number;
     name:string;
     document:string;
-    spots:number;
+    spots:string;
     createdAt:string;
 }
 
 interface Users {
-    id:string;
+    _id:number;
     name:string;
     document:string;
     createdAt:string;
@@ -25,7 +24,8 @@ interface ClientContext {
     createUser: (user: userInput) => Promise<void>
     showClient: () => void;
     getAllClient:() => void;
-    getAllUsers:() => void
+    getAllUsers:() => void;
+    deleteClient:(id : number) => void;
     replaceCreatedAt: (createAt: string) => string;
     showclient: boolean;
 }
@@ -33,6 +33,7 @@ interface ClientContext {
 interface ClientInput {
     name:string;
     document:string;
+    spots:string;
 }
 
 interface userInput {
@@ -64,13 +65,13 @@ export function ClientContextProvider({children}:clientContext){
    
     async function createClient(clientRequest: ClientInput){
         const response = await api.post('/client', clientRequest)
-        if (response.status == 200) setShowClient(true)
+        if (response.status === 200) setShowClient(true)
         setResponseClient(response.data)
     }
 
     async function createUser(userRequest: userInput){
         const response = await api.post('/user', userRequest)
-        if (response.status == 200) setShowClient(false)
+        if (response.status === 200) setShowClient(false)
         setResponseClient(response.data)
     }
 
@@ -86,6 +87,13 @@ export function ClientContextProvider({children}:clientContext){
         await api('/users').then(response => setUsers(response.data))
     }
 
+    async function deleteClient(id :number){
+        console.log(id)
+        const response = await api.delete(`/client/id/${id}`) 
+        if (response.status === 200) setResponseClient(response.data)    
+
+    }
+
     function showClient(){
         if(!showclient){
             setShowClient(true)
@@ -95,7 +103,7 @@ export function ClientContextProvider({children}:clientContext){
     }
 
     return (
-        <ClientContext.Provider value={{clients, users, showClient, showclient, createClient, getAllClient, getAllUsers, replaceCreatedAt, createUser}}>
+        <ClientContext.Provider value={{clients, users, showClient, showclient, createClient, getAllClient, getAllUsers, replaceCreatedAt, createUser, deleteClient}}>
             {children}
         </ClientContext.Provider>
     );
