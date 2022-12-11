@@ -13,7 +13,7 @@ export function TableClient() {
         <Container>
            <table>
             <thead>
-                <p> Tabela de Clientes </p>
+                <p> Lista de Clientes </p>
                 <tr>
                     <th>Nome</th>
                     <th>Documento</th>

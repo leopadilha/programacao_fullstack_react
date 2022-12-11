@@ -26,6 +26,7 @@ interface ClientContext {
     getAllClient:() => void;
     getAllUsers:() => void;
     deleteClient:(id : number) => void;
+    deleteUser:(document : string) => void;
     replaceCreatedAt: (createAt: string) => string;
     showclient: boolean;
 }
@@ -54,6 +55,7 @@ export function ClientContextProvider({children}:clientContext){
     const [ users, setUsers ] = useState<Users[]>([])
     const [ showclient, setShowClient ] = useState(false)
     const [ responseClient, setResponseClient ] = useState<null | Client>(null)
+    const [ responseUser, setResponseUser ] = useState<null | Users>(null)
 
     useEffect(()=>{
         if (showclient){
@@ -61,7 +63,7 @@ export function ClientContextProvider({children}:clientContext){
         }else{
             getAllUsers()
         }        
-    },[showclient, responseClient])
+    },[showclient, responseClient, responseUser])
    
     async function createClient(clientRequest: ClientInput){
         const response = await api.post('/client', clientRequest)
@@ -94,6 +96,13 @@ export function ClientContextProvider({children}:clientContext){
 
     }
 
+    async function deleteUser(document :string){
+        console.log(document)
+        const response = await api.delete(`/user/${document}`) 
+        if (response.status === 200) setResponseUser(response.data)            
+
+    }
+
     function showClient(){
         if(!showclient){
             setShowClient(true)
@@ -103,7 +112,7 @@ export function ClientContextProvider({children}:clientContext){
     }
 
     return (
-        <ClientContext.Provider value={{clients, users, showClient, showclient, createClient, getAllClient, getAllUsers, replaceCreatedAt, createUser, deleteClient}}>
+        <ClientContext.Provider value={{clients, users, showClient, showclient, createClient, getAllClient, getAllUsers, replaceCreatedAt, createUser, deleteClient, deleteUser}}>
             {children}
         </ClientContext.Provider>
     );

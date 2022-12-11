@@ -7,6 +7,7 @@ export const Button = styled.button`
     border-radius:5px;
     color: #256D85;
     height: 30px;
+    font-size:15px;
 
     &:hover{
         filter:brightness(0.8)
@@ -20,7 +21,7 @@ export const Container = styled.header`
     margin: 10px 50px 10px 50px;
 `
 export const Title = styled.h1`
-    font-size:20px;
+    font-size:25px;
     ccolor: #002B5B;
 `
 

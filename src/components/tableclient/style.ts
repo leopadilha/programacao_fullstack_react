@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-
-    
     margin-top:50px;
     display:flex;
     justify-content: center;
@@ -28,7 +26,7 @@ export const Container = styled.div`
     td{
         border:0px;
         padding: 5px;
-        border-spacing: 2px;
+        border-spacing: 5px;
         background-color: lightgray;
         
     }
@@ -36,7 +34,12 @@ export const Container = styled.div`
     p{
         color: #2B4865;
 
-
+    }
+    button{
+        cursor:pointer;
+        color: #256D85;           
+        font-size:15px;
+        
     }
 
    

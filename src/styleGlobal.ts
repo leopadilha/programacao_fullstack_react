@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     .react-modal-content{
         width:40%
         border-radius:5px;
-        background: gray;
+        background: #C0C0C0;
         height:300px;
     } 
     
