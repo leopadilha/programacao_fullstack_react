@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ClientContext } from "../context/clientContext";
 import { Container} from "../tableclient/style";
+import { Loading } from '../loading/loading';
 
 
 export function TableUsers() {
@@ -10,9 +11,13 @@ export function TableUsers() {
 
     return (
         <Container>
+            { users.length === 0 && 
+            <Loading
+            text="Aguarde enquanto carregamos os usuários..."
+            /> }
            <table>
+           { users.length > 0 &&
             <thead>
-                <p> Lista de Usuários </p>
                 <tr>
                     <th>Nome</th>
                     <th>Documento</th>
@@ -20,7 +25,7 @@ export function TableUsers() {
                     <th>Ações</th>
                 </tr>
             </thead>
-
+            }
             <tbody>
                 { users.map(user => {
                     return (

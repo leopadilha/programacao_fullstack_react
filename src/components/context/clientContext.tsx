@@ -56,13 +56,16 @@ export function ClientContextProvider({children}:clientContext){
     const [ showclient, setShowClient ] = useState(false)
     const [ responseClient, setResponseClient ] = useState<null | Client>(null)
     const [ responseUser, setResponseUser ] = useState<null | Users>(null)
-
+    
     useEffect(()=>{
-        if (showclient){
-            getAllClient()
-        }else{
-            getAllUsers()
-        }        
+        setTimeout(()=>{
+            if (showclient){
+                getAllClient()
+            }else{
+                getAllUsers()
+            }        
+        }, 3000)
+       
     },[showclient, responseClient, responseUser])
    
     async function createClient(clientRequest: ClientInput){

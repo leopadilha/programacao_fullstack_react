@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ClientContext } from "../context/clientContext";
 import { Container} from "./style";
-
+import { Loading } from '../loading/loading';
 
 
 export function TableClient() {
@@ -11,9 +11,13 @@ export function TableClient() {
 
     return (
         <Container>
+        { clients.length === 0 && 
+        <Loading
+        text="Aguarde enquanto carregamos os clientes..."
+        /> }
            <table>
+            { clients.length > 0 &&
             <thead>
-                <p> Lista de Clientes </p>
                 <tr>
                     <th>Nome</th>
                     <th>Documento</th>
@@ -22,6 +26,7 @@ export function TableClient() {
                     <th>Ações</th>
                 </tr>
             </thead>
+            }
             <tbody>
                 { clients.map(client => {
                     return (
