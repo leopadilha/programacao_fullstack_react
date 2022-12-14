@@ -82,7 +82,7 @@ export function ClientContextProvider({children}:clientContext){
 
     function replaceCreatedAt(createdAt: string){
         const createdAtReplace = createdAt.split('T')
-        return createdAtReplace[0].replace('-','/').replace('-','/')
+        return createdAtReplace[0].split('-').reverse().join('/')
     }
     async function getAllClient(){
         await api('/client').then(response => setClients(response.data))

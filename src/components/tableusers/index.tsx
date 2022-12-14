@@ -8,7 +8,14 @@ export function TableUsers() {
 
     const { users, replaceCreatedAt, deleteUser } = useContext(ClientContext)
     
-
+    function cpfMask(value:string){
+            return value
+              .replace(/\D/g, '') 
+              .replace(/(\d{3})(\d)/, '$1.$2') 
+              .replace(/(\d{3})(\d)/, '$1.$2')
+              .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+              .replace(/(-\d{2})\d+?$/, '$1')         
+    }
     return (
         <Container>
             { users.length === 0 && 
@@ -32,7 +39,7 @@ export function TableUsers() {
                         <tr key={user._id}>
                             
                             <td>{user.name}</td>
-                            <td>{user.document}</td>
+                            <td>{cpfMask(user.document)}</td>
                             <td>{replaceCreatedAt(user.createdAt)}</td>
                             <td> <button type="button" onClick={() => deleteUser(user.document)}> Deletar </button> <button> Editar </button> </td>
                     </tr>               
