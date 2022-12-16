@@ -20,7 +20,7 @@ export function TableUsers() {
         <Container>
             { users.length === 0 && 
             <Loading
-            text="Aguarde enquanto carregamos os usuários..."
+            text="Aguarde enquanto carregamos os usuários"
             /> }
            <table>
            { users.length > 0 &&
