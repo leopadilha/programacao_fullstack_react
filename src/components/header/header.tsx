@@ -13,7 +13,7 @@ export function Header({openModal, openModalUser}: headerProp) {
 
             <Buttons>
                 <Button type="button" onClick={openModal}>
-                    Cadastrar 
+                    Cadastrando cliente 
                 </Button>
 
                 <Button type="button"  onClick={openModalUser}>
