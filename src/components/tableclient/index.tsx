@@ -22,7 +22,7 @@ export function TableClient() {
                     <th>Nome</th>
                     <th>Documento</th>
                     <th>Pontos</th>
-                    <th>Criação</th>
+                    <th>Criação do usuário</th>
                     <th>Ações</th>
                 </tr>
             </thead>
