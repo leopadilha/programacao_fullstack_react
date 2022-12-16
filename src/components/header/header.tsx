@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Button, Buttons, Container, Title } from "./style";
 
 interface headerProp {
@@ -13,7 +13,7 @@ export function Header({openModal, openModalUser}: headerProp) {
 
             <Buttons>
                 <Button type="button" onClick={openModal}>
-                    Cadastrar Cliente
+                    Criar cliente
                 </Button>
 
                 <Button type="button"  onClick={openModalUser}>
